@@ -36,14 +36,15 @@
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 mt-2">
         {% for cam in webcams %}
         <div class="col">
-          <div class="card shadow-sm h-100">
-            <a href="{{ cam.url }}" target="_blank" class="text-decoration-none">
-              <img src="{{ cam.image }}" class="card-img-top" alt="{{ cam.name }}">
-              <div class="card-body text-center">
-                <h5 class="card-title">{{ cam.name }}</h5>
-              </div>
-            </a>
-          </div>
+          
+          <h5 class="card-title">{{ cam.name }}</h5>
+            <div class="ratio ratio-16x9">
+              <iframe src="{{ cam.url }}"
+                      title="{{ cam.name }}" frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen>
+              </iframe>
+            </div>
         </div>
         {% endfor %}
       </div>
