@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mad River Valley Snow App</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container py-5 text-center">
+
+  <h1 class="mb-4">Mad River Valley Snow & Weather</h1>
+  <p class="mb-4">Select a mountain to view current conditions, forecasts, and observations.</p>
+
+    <div class="row justify-content-center">
+    {% for id, m in summaries.items() %}
+    <div class="col-md-4 mb-4">
+        <a href="{{ url_for('mountain_page', mountain_id=id) }}" class="text-decoration-none">
+        <div class="card shadow-sm">
+            <div class="card-body text-center">
+            <img src="{{ url_for('static', filename=m.icon) }}" alt="{{ m.name }}" style="height:50px;"><br>
+            <h3 class="card-title mt-2">{{ m.name }}</h3>
+            <p class="card-text small">Click to view forecast & history</p>
+            <hr>
+            <p class="mb-1">{{ m.thermo_emoji }} Temp: <strong>{{ m.current_temp }}°F</strong></p>
+            <p class="mb-1">{{ m.condition_emoji }} Condition: <strong>{{ m.condition }}</strong></p>
+            <hr>
+            <p class="mb-1">❄️ Last 3 Days: <strong>{{ m.recent_snow }} in</strong></p>
+            <p class="mb-0">🌨️ Forecast (48h): <strong>{{ m.forecast_snow }} in</strong></p>
+            </div>
+        </div>
+        </a>
+    </div>
+    {% endfor %}
+    </div>
+
+    <h3 class="mt-5 text-center">🎥 Live Mountain Webcams</h3>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 mt-2">
+        {% for cam in webcams %}
+        <div class="col">
+          <div class="card shadow-sm h-100">
+            <a href="{{ cam.url }}" target="_blank" class="text-decoration-none">
+              <img src="{{ cam.image }}" class="card-img-top" alt="{{ cam.name }}">
+              <div class="card-body text-center">
+                <h5 class="card-title">{{ cam.name }}</h5>
+              </div>
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+</div>
+</body>
+</html>

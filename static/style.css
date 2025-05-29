@@ -1,0 +1,10 @@
+.forecast-scroll-container {
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+
+.table th, .table td {
+  min-width: 130px;
+  vertical-align: top;
+  font-size: 0.9rem;
+}
