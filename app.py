@@ -21,23 +21,23 @@ LOCATIONS = {
 WEBCAMS = [
     {
         "name": "Sugarbush Super Bravo",
-        "url": "https://www.youtube.com/watch?v=n5QqJSYEZT8"
+        "url": "https://www.youtube.com/embed/n5QqJSYEZT8"
     },
     {
         "name": "Sugarbush Ellen Base",
-        "url": "https://www.youtube.com/watch?v=ipi5Fl4L68c"
+        "url": "https://www.youtube.com/embed/ipi5Fl4L68c"
     },
     {
         "name": "Sugarbush Allyn's Lodge",
-        "url": "https://www.youtube.com/watch?v=SW8uNfI43E4"
+        "url": "https://www.youtube.com/embed/SW8uNfI43E4"
     },
     {
         "name": "Mad River Base",
-        "url": "https://www.youtube.com/watch?v=wVOqgmbvCrY"
+        "url": "https://www.youtube.com/embed/wVOqgmbvCrY"
     },
     {
         "name": "Mad River Mid",
-        "url": "https://www.youtube.com/watch?v=zMuhC48767w"
+        "url": "https://www.youtube.com/embed/zMuhC48767w"
     }
     
 ]
