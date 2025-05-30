@@ -61,16 +61,14 @@
 </div>
 
 <h3 class="mt-4">📊 Past 5 Days – Min/Max Temp & Snowfall</h3>
-<table class="table table-striped">
-  <thead>
-    <tr><th>Date</th><th>Min Temp (°F)</th><th>Max Temp (°F)</th><th>Snowfall (in)</th></tr>
-  </thead>
+<table class="table">
+  <thead><tr><th>Date</th><th>Min Temp (°F)</th><th>Max Temp (°F)</th><th>Snowfall (in)</th></tr></thead>
   <tbody>
     {% for day in obs_summary %}
     <tr>
       <td>{{ day.date }}</td>
-      <td>{{ day.min_temp if day.min_temp is not none else "–" }}</td>
-      <td>{{ day.max_temp if day.max_temp is not none else "–" }}</td>
+      <td>{{ day.min_temp }}</td>
+      <td>{{ day.max_temp }}</td>
       <td>{{ day.snowfall }}</td>
     </tr>
     {% endfor %}
