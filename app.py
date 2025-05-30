@@ -2,7 +2,6 @@ from flask import Flask, render_template, jsonify
 from weather.noaa import fetch_noaa_forecast, fetch_noaa_observations
 from weather.summarize import summarize_recent_snowfall, summarize_forecast_snowfall, get_current_conditions, summarize_observations
 from weather.conditions import condition_to_emoji, thermometer_emoji
-from weather.open_meteo import fetch_open_meteo_forecast, fetch_open_meteo_history
 from weather.mountain_scrape import get_current_obs
 import time
 from datetime import datetime, timedelta
@@ -89,9 +88,6 @@ def mountain_page(mountain_id):
 
     today = datetime.today()
     start = today - timedelta(days=5)
-    history = fetch_open_meteo_history(lat, lon, elev, start, today)
-
-    history = fetch_open_meteo_history(lat, lon, elev, start, today)
     forecast, hourly = fetch_noaa_forecast(mtn["lat"], mtn["lon"])
     observations = fetch_noaa_observations(mtn["station"], hours=25*5)
 
