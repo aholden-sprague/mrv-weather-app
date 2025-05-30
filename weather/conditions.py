@@ -20,7 +20,5 @@ def thermometer_emoji(temp):
         return "🥶"
     elif temp <= 32:
         return "❄️"
-    elif temp <= 45:
-        return "🧥"
     else:
         return "🌡️"

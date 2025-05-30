@@ -1,4 +1,5 @@
 from collections import defaultdict
+from weather.mountain_scrape import get_sugarbush_weather
 
 def summarize_observations(observations, days=5):
     daily_data = defaultdict(lambda: {
