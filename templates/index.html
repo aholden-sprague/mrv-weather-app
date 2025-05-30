@@ -18,7 +18,7 @@
             <div class="card-body text-center">
             <img src="{{ url_for('static', filename=m.icon) }}" alt="{{ m.name }}" style="height:50px;"><br>
             <h3 class="card-title mt-2">{{ m.name }}</h3>
-            <p class="card-text small">Click to view forecast & history</p>
+            <p class="card-text small">Click to view detailed forecast</p>
             <hr>
             <p class="mb-1">{{ m.thermo_emoji }} Temp: <strong>{{ m.current_temp }}°F</strong></p>
             <p class="mb-1">{{ m.condition_emoji }} Condition: <strong>{{ m.condition }}</strong></p>

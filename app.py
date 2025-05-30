@@ -99,27 +99,12 @@ def mountain_page(mountain_id):
     #obs_summary = summarize_observations(observations, days=5)
     hourly_forecast = hourly["periods"][:48]
 
-    obs_summary = []
-    dates = history.get("daily", {}).get("time", [])
-    max_temps = history.get("daily", {}).get("temperature_2m_max", [])
-    min_temps = history.get("daily", {}).get("temperature_2m_min", [])
-    snowfalls = history.get("daily", {}).get("snowfall_sum", [])
-
-    for i in range(len(dates)):
-        obs_summary.append({
-            "date": dates[i],
-            "min_temp": round(min_temps[i], 1),
-            "max_temp": round(max_temps[i], 1),
-            "snowfall": round(snowfalls[i] / 2.54, 2)  # cm to inches
-        })
-
     return render_template(
         "mountain.html",
         mountain=mtn,
         days=days,
         nights=nights,
-        hourly=hourly_forecast,
-        obs_summary=obs_summary
+        hourly=hourly_forecast
     )
 
 if __name__ == "__main__":
