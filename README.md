@@ -47,7 +47,7 @@ mrv-weather-app/
 │   ├── sugarbush.png
 │   └── mrg.png
 ```
-Getting Started
+# Getting Started
 1. Clone the repository
 bash
 Copy
@@ -68,7 +68,7 @@ Edit
 python app.py
 Then open your browser to: http://localhost:5000
 
-Deployment (Render)
+# Deployment (Render)
 This app is preconfigured for deployment to Render:
 
 Push your code to GitHub
@@ -83,7 +83,7 @@ Start Command: gunicorn app:app
 
 (Optional) Use render.yaml for auto-deploys
 
-Requirements
+# Requirements
 Flask
 
 Requests
@@ -98,7 +98,7 @@ Bootstrap 5 (via CDN)
 
 NOAA Weather API
 
-Credits
+# Credits
 NOAA Weather API – weather.gov
 
 Sugarbush – sugarbush.com
@@ -107,9 +107,9 @@ Mad River Glen – madriverglen.com
 
 Bootstrap 5 Icons
 
-License
+# License
 MIT License — Free for personal or educational use.
 
-Author
+# Author
 Created by Andrew Holden
 Feedback and contributions welcome.
