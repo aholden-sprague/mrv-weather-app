@@ -25,7 +25,7 @@ Visit: https://mrv-weather-app.onrender.com
 graphql
 Copy
 Edit
-'''
+```
 mrv-weather-app/
 ├── app.py                  # Main Flask application
 ├── requirements.txt        # Python dependencies
@@ -46,7 +46,7 @@ mrv-weather-app/
 │   ├── style.css
 │   ├── sugarbush.png
 │   └── mrg.png
-'''
+```
 Getting Started
 1. Clone the repository
 bash
