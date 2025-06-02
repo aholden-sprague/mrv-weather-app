@@ -8,8 +8,6 @@ from datetime import datetime, timedelta
 
 app = Flask(__name__)
 
-weather_cache = {}
-
 LOCATIONS = {
     'ellen_summit': {'lat':44.16048, 'lon':-72.9292, 'elevation':4050, 'station': 'KBTV', 'icon': 'sugarbush.png', 'name': 'Mt. Ellen'},
     'lincoln_summit': {'lat':44.12774, 'lon':-72.92815, 'elevation':3900, 'station': 'KBTV', 'icon': 'sugarbush.png', 'name': 'Lincoln Peak'},
