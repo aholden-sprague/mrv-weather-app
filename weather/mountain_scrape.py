@@ -1,9 +1,16 @@
 import requests
 from bs4 import BeautifulSoup
+from weather.cache import get_from_cache, set_cache
 
 def get_sugarbush_weather():
+    cache_key = "sugarbush_weather"
+    cached = get_from_cache(cache_key, 900)  # 15 minutes
+    if cached:
+        return cached
+
     url = "https://mtnpowder.com/feed"
     token = "YOUR_VALID_BEARER_TOKEN"
+
     try:
         res = requests.get(f"{url}")
         res.raise_for_status()
@@ -15,7 +22,7 @@ def get_sugarbush_weather():
         current = sugarbush['CurrentConditions']['Summit']
         forecast = sugarbush["Forecast"]
 
-        return {
+        result = {
             "snow_24h": int(snow["Last24HoursIn"]),
             "snow_48h": int(snow["Last48HoursIn"]),
             "snow_72h": int(snow["Last72HoursIn"]),
@@ -29,11 +36,21 @@ def get_sugarbush_weather():
             "current_temp": current["TemperatureF"],
             "conditions": current["Skies"]
         }
+
+        set_cache(cache_key, result)
+        return result
+
     except Exception as e:
         print(f"[ERROR] Failed to fetch Sugarbush data: {e}")
         return {}
+
     
 def get_mrg_snow():
+    cache_key = "mrg_snow"
+    cached = get_from_cache(cache_key, 900)
+    if cached:
+        return cached
+
     url = "https://www.madriverglen.com/conditions/"
     headers = {"User-Agent": "MRV Weather App"}
 
@@ -42,14 +59,12 @@ def get_mrg_snow():
         res.raise_for_status()
         soup = BeautifulSoup(res.text, "html.parser")
 
-        # Create a dictionary of label: value from all <strong>Label:</strong> Value
         report_data = {}
         for row in soup.find_all("tr"):
             td = row.find("td")
             if td:
                 span = td.find("span")
                 if span:
-                    # label is everything in the td before the <span>
                     label_parts = td.contents
                     label_text = ""
                     for part in label_parts:
@@ -60,15 +75,24 @@ def get_mrg_snow():
                     value = span.get_text(strip=True)
                     report_data[label] = value
 
-        return {
+        result = {
             "snow_24h": report_data.get("New Snow", "?")
         }
+
+        set_cache(cache_key, result)
+        return result
 
     except Exception as e:
         print(f"[ERROR] Failed to scrape MRG conditions: {e}")
         return {}
+
     
 def get_mrg_current():
+    cache_key = "mrg_current_weather"
+    cached = get_from_cache(cache_key, 300)  # shorter cache for live data
+    if cached:
+        return cached
+
     url = "https://www.rainwise.net/data/rwxml.php?mac=00C033F798DC&json=1"
     headers = {"User-Agent": "MRV Weather App"}
 
@@ -77,17 +101,18 @@ def get_mrg_current():
         res.raise_for_status()
         data = res.json()
 
-        # Extract from known correct keys
         weather = {
             "current_temp": data.get("temp_f", "?"),
             "current_wind": data.get("wind_mph", "?")
         }
 
+        set_cache(cache_key, weather)
         return weather
 
     except Exception as e:
         print(f"[ERROR] Failed to fetch MRG RainWise JSON: {e}")
         return {}
+
     
 def get_current_obs(mountain):
     sb = get_sugarbush_weather()
