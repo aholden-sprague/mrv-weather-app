@@ -8,8 +8,6 @@ It’s designed for skiers, snowboarders, and outdoor enthusiasts who want accur
 
 48-Hour Hourly Forecast (temperature, wind, conditions, precipitation chance)
 
-Past 5-Day Observations (daily min/max temperatures and snowfall)
-
 Current Conditions (text-based summary with temperature indicators)
 
 Live Webcam Grid (preview images and direct links)
